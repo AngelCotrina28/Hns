@@ -40,7 +40,7 @@ public class ClienteDAO {
         } 
     }
     
-    public int obtenerIdClientePorDocumento(String documento, int cantidadClientes) {
+    /*public int obtenerIdClientePorDocumento(String documento, int cantidadClientes) {
         String sqlQuery = "select id_cliente from clientes where numero_identificacion = ?";
         try { 
             Connection conexion = ConexionBD.getInstancia().getConexion();
@@ -58,32 +58,32 @@ public class ClienteDAO {
             System.out.println("Error al conectar o consultar la base de datos.\n"+e);
             return -1;
         }   
-    }
+    }*/
     
     public Cliente buscarCliente(String documento, String tipoDocumento) {
-        Cliente clienteEncontrado = null;
         String sqlQuery = "select * from clientes where documento = ? and tipo_documento = ?";
-        try {
-            Connection conexion = ConexionBD.getInstancia().getConexion();
-            PreparedStatement ps = conexion.prepareStatement(sqlQuery);
+        try(Connection conexion = ConexionBD.getInstancia().getConexion();
+            PreparedStatement ps  = conexion.prepareCall(sqlQuery)) {
             ps.setString(1, documento);
-            ps.setString(2,tipoDocumento);
-            ResultSet rs = ps.executeQuery();
-            if( rs.next() ) {
-                clienteEncontrado = new Cliente();
-                clienteEncontrado.setNombre(rs.getString("nombre"));
-                clienteEncontrado.setApellidoPaterno(rs.getString("apellido_paterno"));
-                clienteEncontrado.setApellidoMaterno(rs.getString("apellido_materno"));
-                clienteEncontrado.setDireccion(rs.getString("direccion"));
-                clienteEncontrado.setDepartamento(rs.getString("departamento"));
-                clienteEncontrado.setProvincia(rs.getString("provincia"));
-                clienteEncontrado.setDistrito(rs.getString("distrito"));
-                clienteEncontrado.setNacionalidad(rs.getString("nacionalidad"));
+            ps.setString(2, tipoDocumento);
+            try(ResultSet rs = ps.executeQuery();) {
+                if( rs.next() ) {
+                    Cliente clienteEncontrado = new Cliente();
+                    clienteEncontrado.setNombre(rs.getString("nombre"));
+                    clienteEncontrado.setApellidoPaterno(rs.getString("apellido_paterno"));
+                    clienteEncontrado.setApellidoMaterno(rs.getString("apellido_materno"));
+                    clienteEncontrado.setDireccion(rs.getString("direccion"));
+                    clienteEncontrado.setDepartamento(rs.getString("departamento"));
+                    clienteEncontrado.setProvincia(rs.getString("provincia"));
+                    clienteEncontrado.setDistrito(rs.getString("distrito"));
+                    clienteEncontrado.setNacionalidad(rs.getString("nacionalidad"));
+                    return clienteEncontrado;
+                } 
+                return null;
             }
         } catch (SQLException e) {
             System.out.println("ERROR: "+e);
-        } finally {
-            return clienteEncontrado;
+            return null;
         }
     }
 }

@@ -8,9 +8,9 @@ public class Cliente {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String direccion;
-    private String departamento = "Departamento";
-    private String provincia = "Provincia";
-    private String distrito = "Distrito";
+    private String departamento;
+    private String provincia;
+    private String distrito;
     private String nacionalidad;
 
     public Cliente() {

@@ -1,31 +1,48 @@
 package com.hotelnaylamp.view;
 
 
+import com.hotelnaylamp.controller.DetalleReservaController;
+import com.hotelnaylamp.controller.ReservaController;
+import com.hotelnaylamp.model.entities.Reserva;
 import com.hotelnaylamp.util.FechaConversorUtil;
 import com.hotelnaylamp.view.Moldes.PanelRegistroCliente;
-import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Point;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class RegistroCliente extends javax.swing.JDialog {
 
- 
+    private DetalleReservaController detalleReservaController = new DetalleReservaController();
+    private ReservaController reservaController = new ReservaController();
     
-//CONSTRUCTOR DE LA VISTA
+    //CONSTRUCTOR DE LA VISTA
     public RegistroCliente(Frame parent, boolean modal, int ancho, int alto, Point ubicacionVentana) {
         super(parent, modal);
         initComponents();
         this.setResizable(false);
+        
+        // Actualizar precio total cada vez que cambie la pestaña activa
+        jTbdContenedorDatosHabitacion.addChangeListener(e -> {
+            txtPrecioFinalReserva.setText(Float.toString(sumarPrecioFinalReserva()));
+            if(reservaController.validarIdReserva() == null) {
+                Reserva reservaActual = new Reserva();
+                reservaActual = reservaController.cargarReserva(Float.parseFloat(txtPrecioFinalReserva.getText()),
+                                                    "Kazumi");
+                txtNumeroReserva.setText(String.valueOf(reservaActual.getIdReserva()));
+                txtNombreTrabajador.setText(reservaActual.getTrabajador());
+            }
+            
+        });
+        //----------------------------------------------------------------------
         
         //------------------------------------ACOMODAR VENTANA
         int posX = ubicacionVentana.x;
         int posY = ubicacionVentana.y;
         this.setSize(ancho, alto);
         this.setLocation(posX - (int) (posX*0.15), posY + (int) (posY*0.75));
-        //-------------------------------------------------------------------------------------
-
+        //----------------------------------------------------------------------
     }
 
     @SuppressWarnings("unchecked")
@@ -49,21 +66,11 @@ public class RegistroCliente extends javax.swing.JDialog {
             }
         });
 
-        jTbdContenedorDatosHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTbdContenedorDatosHabitacionMouseClicked(evt);
-            }
-        });
-        jTbdContenedorDatosHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTbdContenedorDatosHabitacionKeyPressed(evt);
-            }
-        });
-
         btnCrearRegistro.setText("Crear Registro");
         btnCrearRegistro.addActionListener(this::btnCrearRegistroActionPerformed);
 
         txtNumeroReserva.setEditable(false);
+        txtNumeroReserva.setColumns(8);
         txtNumeroReserva.setText("Numero Reserva");
 
         jLabel1.setText("Reserva Nº");
@@ -71,6 +78,7 @@ public class RegistroCliente extends javax.swing.JDialog {
         jLabel2.setText("Trabajador:");
 
         txtNombreTrabajador.setEditable(false);
+        txtNombreTrabajador.setColumns(10);
         txtNombreTrabajador.setText("Trabajador");
 
         jLabel3.setText("Precio Final a Cobrar: ");
@@ -139,7 +147,7 @@ public class RegistroCliente extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//BOTON CREAR REGISTRO ------------------------------------------------------------------
+    //BOTON CREAR REGISTRO ------------------------------------------------------------------
     private void btnCrearRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRegistroActionPerformed
         int cantidadHabitaciones = jTbdContenedorDatosHabitacion.getTabCount();
 
@@ -147,6 +155,7 @@ public class RegistroCliente extends javax.swing.JDialog {
 
             PanelRegistroCliente panelActual = (PanelRegistroCliente) jTbdContenedorDatosHabitacion.getComponentAt(i);
             
+            //Revisar Fecha ingreso y salida -------------------
             LocalDateTime fechaEntradaSalida = panelActual.obtenerFechaEntrada(); //se usa la misma variable
             String fechaTexto = FechaConversorUtil.convertirFechaBD(fechaEntradaSalida);
             System.out.println(fechaTexto);
@@ -154,6 +163,7 @@ public class RegistroCliente extends javax.swing.JDialog {
             fechaEntradaSalida = panelActual.establecerFechaSalida();
             fechaTexto = FechaConversorUtil.convertirFechaBD(fechaEntradaSalida);
             System.out.println(fechaTexto);
+            //----------------------------------------------------
         }
     }//GEN-LAST:event_btnCrearRegistroActionPerformed
 
@@ -163,14 +173,6 @@ public class RegistroCliente extends javax.swing.JDialog {
             dispose();
         }
     }//GEN-LAST:event_formWindowClosing
-
-    private void jTbdContenedorDatosHabitacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbdContenedorDatosHabitacionKeyPressed
-       
-    }//GEN-LAST:event_jTbdContenedorDatosHabitacionKeyPressed
-
-    private void jTbdContenedorDatosHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbdContenedorDatosHabitacionMouseClicked
-        txtPrecioFinalReserva.setText(Float.toString(sumarPrecioFinalReserva()));
-    }//GEN-LAST:event_jTbdContenedorDatosHabitacionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -199,7 +201,7 @@ public class RegistroCliente extends javax.swing.JDialog {
     javax.swing.JPanel pnlCabecera = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
     pnlCabecera.setOpaque(false); // Transparente para que se vea el fondo de la pestaña
     
-    javax.swing.JLabel lblTitulo = new javax.swing.JLabel("Hab" + numeroHabitacion + "  ");
+    javax.swing.JLabel lblTitulo = new javax.swing.JLabel("Hab: " + numeroHabitacion + "  ");
     javax.swing.JButton btnX = new javax.swing.JButton("x");
     
     // Hacemos el botón pequeñito y sin bordes feos
@@ -211,15 +213,11 @@ public class RegistroCliente extends javax.swing.JDialog {
     btnX.addActionListener(evt -> {
         int resultado = JOptionPane.showConfirmDialog(this,"¿Desea eliminar habitacion "+numeroHabitacion+"\n   de la reserva?");
         if(resultado == JOptionPane.YES_OPTION){
-            System.out.println(jTbdContenedorDatosHabitacion.getTabCount());
-            System.out.println();
             jTbdContenedorDatosHabitacion.remove(nuevaHabitacion);
             if(jTbdContenedorDatosHabitacion.getTabCount() == 1) {
             dispose();
             }
-            txtPrecioFinalReserva.setText(Float.toString(sumarPrecioFinalReserva()));
-        }
-        
+        }  
     });
     
     // Armamos el mini-panel
@@ -233,27 +231,29 @@ public class RegistroCliente extends javax.swing.JDialog {
     jTbdContenedorDatosHabitacion.setSelectedIndex(indiceNuevaPestaña);
     }
 
-    public int verificarHabitacionInstanciada(String numeroHabitacion) {
-        String nombrePestaña = "Hab: "+numeroHabitacion;
-        for( int i = 0 ; i < jTbdContenedorDatosHabitacion.getTabCount() ; i++) {
-            if( nombrePestaña.equals(jTbdContenedorDatosHabitacion.getTitleAt(i) )) {
-                JOptionPane.showMessageDialog(null,"Habitacion "+numeroHabitacion+ " ya esta seleccionada.","Error",JOptionPane.ERROR_MESSAGE);
-                return 0;
+    public boolean verificarHabitacionInstanciada(String numeroHabitacion) {
+        int numero = Integer.parseInt(numeroHabitacion);
+        for(int i = 1; i < jTbdContenedorDatosHabitacion.getTabCount(); i++) {
+            PanelRegistroCliente panel = (PanelRegistroCliente) 
+                jTbdContenedorDatosHabitacion.getComponentAt(i);
+            if(panel.getHabitacionAsignada() == numero) {
+                JOptionPane.showMessageDialog(null,"Habitacion " + numeroHabitacion + " ya esta seleccionada.","Error", JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         }
-        return 1;
+        return true;
     }
      
     public float sumarPrecioFinalReserva() {
-        float precioFinalAPagar = 0;
-        for(int i = 1; i <jTbdContenedorDatosHabitacion.getTabCount(); i++){
-            Component componente = jTbdContenedorDatosHabitacion.getComponentAt(i);
-            PanelRegistroCliente instanciaPanel = (PanelRegistroCliente) componente;
-            precioFinalAPagar = precioFinalAPagar + instanciaPanel.obtenerCantidadPagada(); 
+        // La vista extrae los valores de cada panel
+        ArrayList<Float> cantidades = new ArrayList<>();
+        for(int i = 1; i < jTbdContenedorDatosHabitacion.getTabCount(); i++){
+            PanelRegistroCliente panel = (PanelRegistroCliente) jTbdContenedorDatosHabitacion.getComponentAt(i);
+            cantidades.add(panel.convertirCantidadPagada());
         }
-        return precioFinalAPagar;
+        // El controller hace el cálculo
+        return detalleReservaController.sumarPrecioFinalReserva(cantidades);
     }
-    
     
    
 }

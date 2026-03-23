@@ -4,10 +4,41 @@ import com.hotelnaylamp.model.entities.Reserva;
 import com.hotelnaylamp.util.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
 public class ReservaDAO {
+    
+    public int obtenerIdReserva(){
+        String sqlQuery = "select id_reserva from reservas order by id_reserva desc limit 1";
+        try(Connection conexion = ConexionBD.getInstancia().getConexion();
+            PreparedStatement ps = conexion.prepareStatement(sqlQuery)){
+            try(ResultSet rs = ps.executeQuery();) {
+                if(rs.next()){
+                    return rs.getInt("id_reserva");
+                }
+                return 0;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en reservaDAO: "+e);
+            return 0;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*public void registrarReserva(int idCliente,int idHabitacion, int idTrabajador, LocalDateTime fechaEntrada,long horas, float precioFinal, float cantidadPagada, String estadoReserva) {
         String sqlQuery = "insert into reservas(id_cliente,id_habitacion,id_trabajador,fecha_entrada,fecha_salida,precio_final,cantidad_pagada,estado_reserva) values (?,?,?,?,?,?,?,?)";
         try(Connection conexion = ConexionBD.getInstancia().getConexion();

@@ -1,14 +1,12 @@
 package com.hotelnaylamp.view;
 
-import com.hotelnaylamp.util.ConexionBD;
+import com.hotelnaylamp.controller.HabitacionController;
+import com.hotelnaylamp.controller.ReservaController;
+import com.hotelnaylamp.model.entities.Habitacion;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -19,16 +17,17 @@ import javax.swing.JToggleButton;
 public class MenuPrincipal extends javax.swing.JFrame {
     private ImageIcon iconLibre = new ImageIcon(getClass().getResource("/images/puerta_abierta.png"));
     private ImageIcon iconOcupado = new ImageIcon(getClass().getResource("/images/puerta_cerrada.png"));
-    private ImageIcon iconReservado;
+    private ImageIcon iconReservado; //TODO: agregar imagen cuando se implemente
     private List<JToggleButton> listaBotones;
-    private Component[] componentes;
     private RegistroCliente ventanaRegistro = null;
+    private HabitacionController habitacionController = new HabitacionController();
+    private ReservaController reservaController = new ReservaController();
 
     public MenuPrincipal() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         listaBotones = new ArrayList<>();
-        componentes = pnlHabitaciones.getComponents();
+        Component[] componentes = pnlHabitaciones.getComponents();
         for(Component comp : componentes) {
             if(comp instanceof JToggleButton) {
                 listaBotones.add((JToggleButton) comp);
@@ -49,30 +48,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
  
     
     private void actualizarHabitaciones() {
-        String sqlQuery = "select numero, estado from habitaciones order by floor(numero/100) desc, numero asc";
-        try {
-            Connection conexion = ConexionBD.getInstancia().getConexion();
-            try( PreparedStatement ps = conexion.prepareStatement(sqlQuery);
-                 ResultSet rs = ps.executeQuery()) {
-                int indice = 0;
-                while(rs.next()) {
-                    int numeroHabitacion = rs.getInt("numero");
-                    String estado = rs.getString("estado");
-                    JToggleButton boton = listaBotones.get(indice);
-                    if(estado.equalsIgnoreCase("DISPONIBLE")) {
-                        boton.setIcon(iconLibre);
-                    } else if(estado.equalsIgnoreCase("OCUPADO")) {
-                        boton.setIcon(iconOcupado);
-                    } else if(estado.equalsIgnoreCase("RESERVADO")) {
-                        boton.setIcon(iconReservado);
-                    } 
-                    indice++;
-                    boton.putClientProperty("Habitacion", numeroHabitacion);
-                }
-            } 
-        } catch (SQLException e) {
-            System.out.println(e);
-        }  
+        List<Habitacion> habitaciones = habitacionController.obtenerTodasLasHabitaciones();
+
+        for(int i = 0; i < habitaciones.size(); i++) {
+            Habitacion habitacion = habitaciones.get(i);
+            JToggleButton boton = listaBotones.get(i);
+
+            if(habitacion.getEstado().equalsIgnoreCase("DISPONIBLE")) {
+                boton.setIcon(iconLibre);
+            } else if(habitacion.getEstado().equalsIgnoreCase("OCUPADO")) {
+                boton.setIcon(iconOcupado);
+            } else if(habitacion.getEstado().equalsIgnoreCase("RESERVADO")) {
+                boton.setIcon(iconReservado);
+            }
+
+            boton.putClientProperty("Habitacion", habitacion.getNumero());
+        }
     }
     
     
@@ -88,7 +79,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             ventanaRegistro.añadirHabitacionAReserva(numeroHabitacion);
             ventanaRegistro.setVisible(true);
         } else {
-            if(ventanaRegistro.verificarHabitacionInstanciada(numeroHabitacion) == 1) {
+            if(ventanaRegistro.verificarHabitacionInstanciada(numeroHabitacion)) {
                 int respuesta = JOptionPane.showConfirmDialog(this,"¿Desea añadir la habitacion "+numeroHabitacion+" a la reserva?");
                 if(respuesta == JOptionPane.YES_OPTION) {
                 ventanaRegistro.añadirHabitacionAReserva(numeroHabitacion);

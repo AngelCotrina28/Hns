@@ -4,19 +4,16 @@ package com.hotelnaylamp.model.entities;
 public class Reserva {
     private int idReserva;
     private float precioFinal;
-    
-    // Relación: La reserva TIENE UN trabajador que la atendió
-    private Trabajador trabajador; 
+    private String trabajador;
 
     public Reserva() {
     }
 
-    public Reserva(int idReserva, float precioFinal, Trabajador trabajador) {
+    public Reserva(int idReserva, float precioFinal, String trabajador) {
         this.idReserva = idReserva;
         this.precioFinal = precioFinal;
-        this.trabajador = trabajador;
+
     }
-    
 
     public int getIdReserva() {
         return idReserva;
@@ -34,13 +31,15 @@ public class Reserva {
         this.precioFinal = precioFinal;
     }
 
-    public Trabajador getTrabajador() {
+    public String getTrabajador() {
         return trabajador;
     }
 
-    public void setTrabajador(Trabajador trabajador) {
+    public void setTrabajador(String trabajador) {
         this.trabajador = trabajador;
     }
+    
+
 
     
 }

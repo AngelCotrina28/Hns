@@ -1,10 +1,13 @@
 package com.hotelnaylamp.model.dao;
 
+import com.hotelnaylamp.model.entities.Habitacion;
 import com.hotelnaylamp.util.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HabitacionDAO {
     /*public void registrarHabitacion(String numeroHabitacion, int idCategoria) {
@@ -68,4 +71,25 @@ public class HabitacionDAO {
             return "Error al cargar Precio";
         }
     }
+    
+    public List<Habitacion> obtenerTodasLasHabitaciones() {
+    String sqlQuery = "SELECT numero, estado FROM habitaciones ORDER BY FLOOR(numero/100) DESC, numero ASC";
+    List<Habitacion> listaHabitaciones = new ArrayList<>();
+    try {
+        Connection conexion = ConexionBD.getInstancia().getConexion();
+        // try-with-resources cierra ps y rs automáticamente
+        try(PreparedStatement ps = conexion.prepareStatement(sqlQuery);
+            ResultSet rs = ps.executeQuery()) {
+            while(rs.next()) {
+                Habitacion habitacion = new Habitacion();
+                habitacion.setNumero(rs.getString("numero"));
+                habitacion.setEstado(rs.getString("estado"));
+                listaHabitaciones.add(habitacion);
+            }
+        }
+    } catch(SQLException e) {
+        System.out.println("Error al obtener habitaciones: " + e);
+    }
+    return listaHabitaciones;
+}
 }
