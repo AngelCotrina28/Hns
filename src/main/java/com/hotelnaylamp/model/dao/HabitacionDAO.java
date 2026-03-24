@@ -10,28 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HabitacionDAO {
-    /*public void registrarHabitacion(String numeroHabitacion, int idCategoria) {
-        Connection conexion = null;
-        String sqlQuery = "insert into habitaciones(numero_habitacion,id_categoria) values(?,?)";
-        PreparedStatement ps = null;
-        try {
-            conexion = ConexionBD.getInstancia().getConexion();
-            ps = conexion.prepareStatement(sqlQuery);
-            ps.setString(1,numeroHabitacion);
-            ps.setInt(2, idCategoria);
-            ps.executeUpdate();
-            System.out.println("Habitacion registrada correctamente.");
-        } catch (Exception e) {
-            System.out.println("Error al registrar habitacion: "+e);
-        } finally {
-            if ( conexion != null ) {
-                conexion.close();
-            }
-            if ( ps != null ) {
-                ps.close();
-            } 
-        }
-    }*/
     
     public int obtenerIdHabitacionPorNumeroHabitacion(String numeroHabitacion) {
         String sqlQuery = "select id_habitacion from habitaciones where numero_habitacion = ?";

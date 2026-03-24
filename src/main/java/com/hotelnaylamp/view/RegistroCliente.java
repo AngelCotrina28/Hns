@@ -3,8 +3,8 @@ package com.hotelnaylamp.view;
 
 import com.hotelnaylamp.controller.DetalleReservaController;
 import com.hotelnaylamp.controller.ReservaController;
-import com.hotelnaylamp.model.entities.Reserva;
 import com.hotelnaylamp.util.FechaConversorUtil;
+import com.hotelnaylamp.util.Sesion;
 import com.hotelnaylamp.view.Moldes.PanelRegistroCliente;
 import java.awt.Frame;
 import java.awt.Point;
@@ -23,17 +23,13 @@ public class RegistroCliente extends javax.swing.JDialog {
         initComponents();
         this.setResizable(false);
         
+        txtNumeroReserva.setText(String.valueOf(reservaController.cargarIdReserva()));
+        txtNombreTrabajador.setText(Sesion.getInstancia().getTrabajadorActivo().getNombre());
+        
+        
         // Actualizar precio total cada vez que cambie la pestaña activa
         jTbdContenedorDatosHabitacion.addChangeListener(e -> {
             txtPrecioFinalReserva.setText(Float.toString(sumarPrecioFinalReserva()));
-            if(reservaController.validarIdReserva() == null) {
-                Reserva reservaActual = new Reserva();
-                reservaActual = reservaController.cargarReserva(Float.parseFloat(txtPrecioFinalReserva.getText()),
-                                                    "Kazumi");
-                txtNumeroReserva.setText(String.valueOf(reservaActual.getIdReserva()));
-                txtNombreTrabajador.setText(reservaActual.getTrabajador());
-            }
-            
         });
         //----------------------------------------------------------------------
         

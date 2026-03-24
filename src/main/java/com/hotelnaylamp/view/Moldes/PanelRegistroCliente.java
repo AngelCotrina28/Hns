@@ -40,7 +40,7 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlContenedorDatosHabitacion = new javax.swing.JPanel();
+        pnlContenedorDatosClientes = new javax.swing.JPanel();
         cboTipoDocumento = new javax.swing.JComboBox<>();
         txtDocumento = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
@@ -55,7 +55,7 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
         btnCancelarEdicion = new javax.swing.JButton();
         sPnlClientes = new javax.swing.JScrollPane();
         pnlContenedorClientes = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlDatosReserva = new javax.swing.JPanel();
         cboTipoHoraIngreso = new javax.swing.JComboBox<>();
         txtPrecio = new javax.swing.JTextField();
         txtCantidadPagada = new javax.swing.JTextField();
@@ -79,10 +79,12 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlContenedorDatosHabitacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Registro de Clientes"));
+        pnlContenedorDatosClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Registro de Clientes"));
+        pnlContenedorDatosClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cboTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "CE", "PTP" }));
         cboTipoDocumento.addActionListener(this::cboTipoDocumentoActionPerformed);
+        pnlContenedorDatosClientes.add(cboTipoDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 28, -1, -1));
 
         txtDocumento.setColumns(10);
         txtDocumento.setText("Documento");
@@ -95,112 +97,57 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
                 txtDocumentoKeyTyped(evt);
             }
         });
+        pnlContenedorDatosClientes.add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 24, 105, 30));
 
         txtNombre.setColumns(10);
         txtNombre.setText("Nombre");
+        pnlContenedorDatosClientes.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 24, -1, 30));
 
         txtDireccion.setText("Direccion");
+        pnlContenedorDatosClientes.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 66, 301, 30));
 
         txtApellidoPaterno.setText("A. Paterno");
+        pnlContenedorDatosClientes.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 24, 109, 30));
 
         txtDepartamento.setText("Departamento");
+        pnlContenedorDatosClientes.add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 108, 119, 30));
 
         txtProvincia.setText("Provincia");
+        pnlContenedorDatosClientes.add(txtProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 165, 30));
 
         txtDistrito.setText("Distrito");
+        pnlContenedorDatosClientes.add(txtDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 150, 119, 30));
 
         txtNacionalidad.setEditable(false);
         txtNacionalidad.setText("PERUANO");
+        pnlContenedorDatosClientes.add(txtNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 108, 165, 30));
 
         txtApellidoMaterno.setText("A. Materno");
+        pnlContenedorDatosClientes.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 24, 110, 30));
 
         btnAgregarOEditarCliente.setBackground(new java.awt.Color(153, 255, 102));
         btnAgregarOEditarCliente.setText("Agregar Cliente");
         btnAgregarOEditarCliente.addActionListener(this::btnAgregarOEditarClienteActionPerformed);
+        pnlContenedorDatosClientes.add(btnAgregarOEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 72, 138, 43));
 
         btnCancelarEdicion.setBackground(new java.awt.Color(255, 51, 51));
         btnCancelarEdicion.setText("Cancelar Edicion");
         btnCancelarEdicion.addActionListener(this::btnCancelarEdicionActionPerformed);
+        pnlContenedorDatosClientes.add(btnCancelarEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 127, 137, 43));
 
-        javax.swing.GroupLayout pnlContenedorDatosHabitacionLayout = new javax.swing.GroupLayout(pnlContenedorDatosHabitacion);
-        pnlContenedorDatosHabitacion.setLayout(pnlContenedorDatosHabitacionLayout);
-        pnlContenedorDatosHabitacionLayout.setHorizontalGroup(
-            pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addComponent(cboTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCancelarEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarOEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        pnlContenedorDatosHabitacionLayout.setVerticalGroup(
-            pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cboTipoDocumento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregarOEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelarEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlContenedorDatosHabitacionLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlContenedorDatosHabitacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(pnlContenedorDatosHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 200));
+        add(pnlContenedorDatosClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 200));
 
         pnlContenedorClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Clientes Hospedados:"));
-        pnlContenedorClientes.setLayout(new java.awt.GridLayout(1, 0));
+        pnlContenedorClientes.setLayout(new java.awt.GridLayout());
         sPnlClientes.setViewportView(pnlContenedorClientes);
 
         add(sPnlClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 660, 130));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de Reserva"));
+        pnlDatosReserva.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de Reserva"));
+        pnlDatosReserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cboTipoHoraIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora del Sistema", "Hora Manual" }));
+        pnlDatosReserva.add(cboTipoHoraIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 27, -1, -1));
 
         txtPrecio.setColumns(15);
         txtPrecio.setText("0.0");
@@ -209,6 +156,7 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
                 txtPrecioFocusLost(evt);
             }
         });
+        pnlDatosReserva.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 159, 85, -1));
 
         txtCantidadPagada.setColumns(10);
         txtCantidadPagada.setText("0.0");
@@ -217,150 +165,78 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
                 txtCantidadPagadaFocusLost(evt);
             }
         });
+        pnlDatosReserva.add(txtCantidadPagada, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 159, 85, -1));
 
         cboTipoHoraSalida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Predeterminado", "Salida Manual" }));
+        pnlDatosReserva.add(cboTipoHoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 115, -1, -1));
 
         lblHoraEntrada.setText("Hora de Ingreso:");
+        pnlDatosReserva.add(lblHoraEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 32, -1, -1));
 
         lblHoraSalida.setText("Hora de Salida:");
+        pnlDatosReserva.add(lblHoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         lblTiempoReservado.setText("Tiempo Reservado:");
+        pnlDatosReserva.add(lblTiempoReservado, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 77, -1, -1));
 
         lblCantidadPagada.setText("Cantidad Pagada:");
+        pnlDatosReserva.add(lblCantidadPagada, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 163, -1, -1));
 
         lblPrecio.setText("Precio:");
+        pnlDatosReserva.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 163, -1, -1));
 
         txtTiempoReservadoHora.setColumns(5);
         txtTiempoReservadoHora.setText("12");
         txtTiempoReservadoHora.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
+        pnlDatosReserva.add(txtTiempoReservadoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 63, -1, 33));
 
         txtTiempoReservadoDia.setColumns(5);
         txtTiempoReservadoDia.setText("0");
         txtTiempoReservadoDia.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
+        pnlDatosReserva.add(txtTiempoReservadoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 63, -1, 33));
 
         txtTiempoReservadoMes.setColumns(5);
         txtTiempoReservadoMes.setText("0");
         txtTiempoReservadoMes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes(es)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
+        pnlDatosReserva.add(txtTiempoReservadoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 63, -1, 33));
 
         cboHoraIngresoManual.setEditable(true);
         cboHoraIngresoManual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboHoraIngresoManual.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         cboHoraIngresoManual.setEnabled(false);
+        pnlDatosReserva.add(cboHoraIngresoManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 23, 85, -1));
 
         cboHoraSalidaManual.setEditable(true);
         cboHoraSalidaManual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboHoraSalidaManual.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         cboHoraSalidaManual.setEnabled(false);
+        pnlDatosReserva.add(cboHoraSalidaManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 111, 80, -1));
 
         spnDiaIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnDiaIngreso.setEnabled(false);
+        pnlDatosReserva.add(spnDiaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 45, -1));
 
         spnMesIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnMesIngreso.setEnabled(false);
+        pnlDatosReserva.add(spnMesIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 20, 45, -1));
 
         spnAnioIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Año", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnAnioIngreso.setEnabled(false);
+        pnlDatosReserva.add(spnAnioIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 20, 70, -1));
 
         spnDiaSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnDiaSalida.setEnabled(false);
+        pnlDatosReserva.add(spnDiaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 108, 45, -1));
 
         spnMesSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnMesSalida.setEnabled(false);
+        pnlDatosReserva.add(spnMesSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 108, 45, -1));
 
         spnAnioSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Año", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnAnioSalida.setEnabled(false);
+        pnlDatosReserva.add(spnAnioSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 108, 70, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblHoraEntrada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboTipoHoraIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spnDiaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spnMesIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spnAnioIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboHoraIngresoManual, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTiempoReservado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTiempoReservadoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTiempoReservadoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTiempoReservadoHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(lblPrecio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(lblHoraSalida)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboTipoHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(spnDiaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(lblCantidadPagada)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidadPagada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(spnMesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(spnAnioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboHoraSalidaManual, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHoraEntrada)
-                    .addComponent(cboTipoHoraIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboHoraIngresoManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnDiaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnMesIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnAnioIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTiempoReservadoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempoReservadoDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempoReservadoHora, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTiempoReservado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboTipoHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHoraSalida)
-                    .addComponent(cboHoraSalidaManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnDiaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnMesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnAnioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPrecio)
-                    .addComponent(lblCantidadPagada)
-                    .addComponent(txtCantidadPagada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 660, 210));
+        add(pnlDatosReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 660, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocumentoKeyReleased
@@ -486,14 +362,14 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboTipoDocumento;
     private javax.swing.JComboBox<String> cboTipoHoraIngreso;
     private javax.swing.JComboBox<String> cboTipoHoraSalida;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCantidadPagada;
     private javax.swing.JLabel lblHoraEntrada;
     private javax.swing.JLabel lblHoraSalida;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTiempoReservado;
     private javax.swing.JPanel pnlContenedorClientes;
-    private javax.swing.JPanel pnlContenedorDatosHabitacion;
+    private javax.swing.JPanel pnlContenedorDatosClientes;
+    private javax.swing.JPanel pnlDatosReserva;
     private javax.swing.JScrollPane sPnlClientes;
     private javax.swing.JSpinner spnAnioIngreso;
     private javax.swing.JSpinner spnAnioSalida;

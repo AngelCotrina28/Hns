@@ -1,6 +1,5 @@
 package com.hotelnaylamp.model.dao;
 
-import com.hotelnaylamp.model.entities.Reserva;
 import com.hotelnaylamp.util.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +23,11 @@ public class ReservaDAO {
             System.out.println("Error en reservaDAO: "+e);
             return 0;
         }
+    }
+    
+    public void registrarReserva() {
+        //UPDATE--------------------------------
+        
     }
     
     
