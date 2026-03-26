@@ -55,51 +55,111 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="509" max="32767" attributes="0"/>
-                      <Component id="btnCrearRegistro" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtPrecioFinalReserva" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMedioDePago" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblPrecioFinalACobrar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtPrecioFinalReserva" min="-2" pref="135" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMedioPago1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cboMedioPago1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMedioPago2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cboMedioPago2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMonto2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtMonto2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMonto1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtMonto1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblNumeroReserva" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtNumeroReserva" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                      <Component id="lblTrabajador" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtNombreTrabajador" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNumeroReserva" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtNombreTrabajador" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="btnCrearRegistro" min="-2" pref="141" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="209" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="lblTipoDeCambio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtTipoDeCambio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTipoDeCambio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTipoDeCambio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNumeroReserva" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNumeroReserva" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTrabajador" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNombreTrabajador" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPrecioFinalACobrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtPrecioFinalReserva" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="282" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="lblMedioDePago" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblMedioPago1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboMedioPago1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMonto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMonto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblMedioPago2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboMedioPago2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMonto2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMonto2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                       <Component id="btnCrearRegistro" min="-2" pref="83" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -117,15 +177,15 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="8"/>
-                <Property name="text" type="java.lang.String" value="Numero Reserva"/>
+                <Property name="text" type="java.lang.String" value="N&#xba; Reserva"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblNumeroReserva">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reserva N&#xba;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblTrabajador">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Trabajador:"/>
               </Properties>
@@ -137,7 +197,7 @@
                 <Property name="text" type="java.lang.String" value="Trabajador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="lblPrecioFinalACobrar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Precio Final a Cobrar: "/>
               </Properties>
@@ -146,6 +206,84 @@
               <Properties>
                 <Property name="columns" type="int" value="10"/>
                 <Property name="text" type="java.lang.String" value="Precio Final Reserva"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblMedioDePago">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Medio de Pago"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblMedioPago1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Medio 1: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboMedioPago1">
+              <Properties>
+                <Property name="maximumRowCount" type="int" value="10"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="EFECTIVO"/>
+                    <StringItem index="1" value="TARJETA"/>
+                    <StringItem index="2" value="QR"/>
+                    <StringItem index="3" value="DOLARES"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblMonto1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtMonto2">
+              <Properties>
+                <Property name="columns" type="int" value="10"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblMedioPago2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Medio 2: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboMedioPago2">
+              <Properties>
+                <Property name="maximumRowCount" type="int" value="10"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="NINGUNO"/>
+                    <StringItem index="1" value="EFECTIVO"/>
+                    <StringItem index="2" value="TARJETA"/>
+                    <StringItem index="3" value="QR"/>
+                    <StringItem index="4" value="DOLARES"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblMonto2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtMonto1">
+              <Properties>
+                <Property name="columns" type="int" value="10"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTipoDeCambio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de Cambio:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTipoDeCambio">
+              <Properties>
+                <Property name="columns" type="int" value="8"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -5,10 +5,13 @@ import com.hotelnaylamp.controller.DetalleReservaController;
 import com.hotelnaylamp.model.entities.Cliente;
 import com.hotelnaylamp.util.CampoNumericoUtil;
 import com.hotelnaylamp.util.PlaceholderUtil;
+import com.hotelnaylamp.view.AñadirProductos;
+import java.awt.Frame;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class PanelRegistroCliente extends javax.swing.JPanel {
 
@@ -76,6 +79,7 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
         spnDiaSalida = new javax.swing.JSpinner();
         spnMesSalida = new javax.swing.JSpinner();
         spnAnioSalida = new javax.swing.JSpinner();
+        btnAñadirProductos = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -138,16 +142,14 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
         add(pnlContenedorDatosClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 200));
 
         pnlContenedorClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Clientes Hospedados:"));
-        pnlContenedorClientes.setLayout(new java.awt.GridLayout());
+        pnlContenedorClientes.setLayout(new java.awt.GridLayout(1, 0));
         sPnlClientes.setViewportView(pnlContenedorClientes);
 
         add(sPnlClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 660, 130));
 
         pnlDatosReserva.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de Reserva"));
-        pnlDatosReserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cboTipoHoraIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora del Sistema", "Hora Manual" }));
-        pnlDatosReserva.add(cboTipoHoraIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 27, -1, -1));
 
         txtPrecio.setColumns(15);
         txtPrecio.setText("0.0");
@@ -156,7 +158,6 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
                 txtPrecioFocusLost(evt);
             }
         });
-        pnlDatosReserva.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 159, 85, -1));
 
         txtCantidadPagada.setColumns(10);
         txtCantidadPagada.setText("0.0");
@@ -165,76 +166,174 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
                 txtCantidadPagadaFocusLost(evt);
             }
         });
-        pnlDatosReserva.add(txtCantidadPagada, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 159, 85, -1));
 
         cboTipoHoraSalida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Predeterminado", "Salida Manual" }));
-        pnlDatosReserva.add(cboTipoHoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 115, -1, -1));
 
         lblHoraEntrada.setText("Hora de Ingreso:");
-        pnlDatosReserva.add(lblHoraEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 32, -1, -1));
 
         lblHoraSalida.setText("Hora de Salida:");
-        pnlDatosReserva.add(lblHoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         lblTiempoReservado.setText("Tiempo Reservado:");
-        pnlDatosReserva.add(lblTiempoReservado, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 77, -1, -1));
 
         lblCantidadPagada.setText("Cantidad Pagada:");
-        pnlDatosReserva.add(lblCantidadPagada, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 163, -1, -1));
 
         lblPrecio.setText("Precio:");
-        pnlDatosReserva.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 163, -1, -1));
 
         txtTiempoReservadoHora.setColumns(5);
         txtTiempoReservadoHora.setText("12");
         txtTiempoReservadoHora.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
-        pnlDatosReserva.add(txtTiempoReservadoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 63, -1, 33));
 
         txtTiempoReservadoDia.setColumns(5);
         txtTiempoReservadoDia.setText("0");
         txtTiempoReservadoDia.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
-        pnlDatosReserva.add(txtTiempoReservadoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 63, -1, 33));
 
         txtTiempoReservadoMes.setColumns(5);
         txtTiempoReservadoMes.setText("0");
         txtTiempoReservadoMes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes(es)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10))); // NOI18N
-        pnlDatosReserva.add(txtTiempoReservadoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 63, -1, 33));
 
         cboHoraIngresoManual.setEditable(true);
         cboHoraIngresoManual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboHoraIngresoManual.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         cboHoraIngresoManual.setEnabled(false);
-        pnlDatosReserva.add(cboHoraIngresoManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 23, 85, -1));
 
         cboHoraSalidaManual.setEditable(true);
         cboHoraSalidaManual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboHoraSalidaManual.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         cboHoraSalidaManual.setEnabled(false);
-        pnlDatosReserva.add(cboHoraSalidaManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 111, 80, -1));
 
         spnDiaIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnDiaIngreso.setEnabled(false);
-        pnlDatosReserva.add(spnDiaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 45, -1));
 
         spnMesIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnMesIngreso.setEnabled(false);
-        pnlDatosReserva.add(spnMesIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 20, 45, -1));
 
         spnAnioIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Año", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnAnioIngreso.setEnabled(false);
-        pnlDatosReserva.add(spnAnioIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 20, 70, -1));
 
         spnDiaSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnDiaSalida.setEnabled(false);
-        pnlDatosReserva.add(spnDiaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 108, 45, -1));
 
         spnMesSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnMesSalida.setEnabled(false);
-        pnlDatosReserva.add(spnMesSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 108, 45, -1));
 
         spnAnioSalida.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Año", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 8))); // NOI18N
         spnAnioSalida.setEnabled(false);
-        pnlDatosReserva.add(spnAnioSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 108, 70, -1));
+
+        btnAñadirProductos.setBackground(new java.awt.Color(255, 255, 153));
+        btnAñadirProductos.setText("Añadir Productos");
+        btnAñadirProductos.addActionListener(this::btnAñadirProductosActionPerformed);
+
+        javax.swing.GroupLayout pnlDatosReservaLayout = new javax.swing.GroupLayout(pnlDatosReserva);
+        pnlDatosReserva.setLayout(pnlDatosReservaLayout);
+        pnlDatosReservaLayout.setHorizontalGroup(
+            pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                                .addComponent(lblTiempoReservado)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtTiempoReservadoMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtTiempoReservadoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtTiempoReservadoHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                                    .addComponent(lblHoraSalida)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(cboTipoHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(spnDiaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(spnMesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(spnAnioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cboHoraSalidaManual, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                                    .addComponent(lblHoraEntrada)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cboTipoHoraIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(spnDiaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(spnMesIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(spnAnioIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cboHoraIngresoManual, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblPrecio)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(lblCantidadPagada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadPagada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addComponent(btnAñadirProductos)
+                        .addGap(53, 53, 53))))
+        );
+        pnlDatosReservaLayout.setVerticalGroup(
+            pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(lblHoraEntrada))
+                            .addComponent(spnDiaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnMesIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(spnAnioIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboHoraIngresoManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(cboTipoHoraIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblTiempoReservado))
+                    .addComponent(txtTiempoReservadoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTiempoReservadoDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTiempoReservadoHora, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(lblHoraSalida))
+                            .addComponent(spnMesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(spnAnioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboHoraSalidaManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboTipoHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnDiaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblPrecio))
+                    .addGroup(pnlDatosReservaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCantidadPagada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCantidadPagada)
+                        .addComponent(btnAñadirProductos))))
+        );
 
         add(pnlDatosReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 660, 210));
     }// </editor-fold>//GEN-END:initComponents
@@ -353,9 +452,25 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
         txtCantidadPagada.setText(txtPrecio.getText());
     }//GEN-LAST:event_txtPrecioFocusLost
 
+    private void btnAñadirProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductosActionPerformed
+        AñadirProductos dialogo = new AñadirProductos(null,true, 
+                                                        habitacionAsignada);
+        dialogo.setVisible(true);
+
+        // Cuando se cierra, actualizamos el precio sumando los productos
+        float totalProductos = dialogo.getTotalProductos();
+        if(totalProductos > 0) {
+            float precioActual = Float.parseFloat(txtPrecio.getText());
+            float nuevoPrecio = precioActual + totalProductos;
+            txtPrecio.setText(String.format("%.2f", nuevoPrecio));
+            txtCantidadPagada.setText(String.format("%.2f", nuevoPrecio));
+        }
+    }//GEN-LAST:event_btnAñadirProductosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarOEditarCliente;
+    private javax.swing.JButton btnAñadirProductos;
     private javax.swing.JButton btnCancelarEdicion;
     private javax.swing.JComboBox<String> cboHoraIngresoManual;
     private javax.swing.JComboBox<String> cboHoraSalidaManual;
@@ -578,5 +693,55 @@ public class PanelRegistroCliente extends javax.swing.JPanel {
             txtTiempoReservadoDia.setEnabled(!esManual);
             txtTiempoReservadoMes.setEnabled(!esManual);
         });   
+    }
+    
+    public String validarErroresCriticos() {
+        String errorPrecio = detalleReservaController.validarPrecioHabitacion(
+            txtPrecio.getText(), habitacionAsignada);
+        if(errorPrecio != null) return "Precio inválido: " + errorPrecio;
+
+        String errorPago = detalleReservaController.validarCantidadPagadaHabitacion(
+            txtCantidadPagada.getText(), habitacionAsignada, txtPrecio.getText());
+        if(errorPago != null) return "Pago inválido: " + errorPago;
+
+        // Solo valida tiempo reservado si la salida es predeterminada
+        if(cboTipoHoraSalida.getSelectedItem().toString().equals("Predeterminado")) {
+            String errorTiempo = detalleReservaController.validarTiempoReservado(
+                txtTiempoReservadoHora.getText(),
+                txtTiempoReservadoDia.getText(),
+                txtTiempoReservadoMes.getText(),
+                habitacionAsignada
+            );
+            if(errorTiempo != null) return errorTiempo;
+        }
+
+        return null;
+    }
+    
+    public String verificarAdvertencias() {
+        StringBuilder advertencias = new StringBuilder();
+        
+        // Regla 1: Habitación sin clientes
+        if (listaClientes.isEmpty()) {
+            advertencias.append("- La habitación ").append(habitacionAsignada).append(" no tiene clientes registrados.\n");
+        }
+        
+        // Regla 2: Cantidad pagada es 0
+        try {
+            float pago = Float.parseFloat(txtCantidadPagada.getText());
+            if(Math.abs(pago) < 0.001f) {
+                advertencias.append("- La cantidad pagada en la habitación ").append(habitacionAsignada).append(" es S/ 0.0.\n");
+            }
+        } catch (NumberFormatException e) {
+            // Ignoramos el error aquí porque el método validarErroresCriticos() ya lo atrapará
+        }
+        
+        // Si hay advertencias, le agregamos la pregunta final
+        if (advertencias.length() > 0) {
+            advertencias.append("\n¿Desea continuar y guardar de todos modos?");
+            return advertencias.toString();
+        }
+        
+        return null; // No hay advertencias
     }
 }
